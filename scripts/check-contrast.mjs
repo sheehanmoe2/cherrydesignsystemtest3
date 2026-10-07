@@ -33,7 +33,8 @@ for (const variant of ['primary', 'secondary', 'tertiary', 'danger']) {
     const p = (prop) => resolve(`color.button.${variant}.${prop}.${state}`);
     const bg = p('bg') === 'transparent' ? surface : p('bg');
     add(`${variant}/${state} text on bg`, p('fg'), bg, 4.5);
-    if (variant !== 'tertiary') add(`${variant}/${state} boundary on surface`, p('border'), surface, 3);
+    // WCAG 1.4.11 exempts disabled controls, so only enabled states need a 3:1 boundary.
+    if (variant !== 'tertiary' && state !== 'disabled') add(`${variant}/${state} boundary on surface`, p('border'), surface, 3);
   }
 }
 add('focus ring on surface', resolve('color.focus.ring'), surface, 3);

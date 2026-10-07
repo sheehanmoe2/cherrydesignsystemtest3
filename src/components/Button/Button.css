@@ -20,10 +20,13 @@
     border-color var(--motion-button-duration);
 }
 
-.btn:hover:not(:disabled) {
-  color: var(--btn-fg-hover);
-  background: var(--btn-bg-hover);
-  border-color: var(--btn-border-hover);
+/* Hover only where a pointer can hover; on touch it would stick after a tap. */
+@media (hover: hover) {
+  .btn:hover:not(:disabled) {
+    color: var(--btn-fg-hover);
+    background: var(--btn-bg-hover);
+    border-color: var(--btn-border-hover);
+  }
 }
 
 .btn:active:not(:disabled) {
@@ -42,6 +45,12 @@
   background: var(--btn-bg-disabled);
   border-color: var(--btn-border-disabled);
   cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
 }
 
 /* Sizes */
