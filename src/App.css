@@ -51,3 +51,8 @@ body {
   gap: var(--space-layout-sm);
   margin-bottom: var(--space-layout-sm);
 }
+
+.demo__badge-cell {
+  display: inline-flex;
+  max-width: 12rem;
+}

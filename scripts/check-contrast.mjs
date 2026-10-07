@@ -46,6 +46,15 @@ for (const variant of ['primary', 'secondary', 'tertiary', 'danger']) {
     if ((variant === 'secondary' || variant === 'danger') && state !== 'disabled') add(`card ${variant}/${state} border on surface`, p('border'), surface, 3);
   }
 }
+for (const variant of ['neutral', 'info', 'success', 'warning', 'danger']) {
+  for (const appearance of ['subtle', 'solid', 'outline']) {
+    const p = (prop) => resolve(`color.badge.${variant}.${appearance}.${prop}.default`);
+    const bg = p('bg') === 'transparent' ? surface : p('bg');
+    add(`badge ${variant}/${appearance} text on bg`, p('fg'), bg, 4.5);
+    // Only the outline border is the badge's sole boundary; subtle and solid are defined by their fill.
+    if (appearance === 'outline') add(`badge ${variant}/outline border on surface`, p('border'), surface, 3);
+  }
+}
 add('focus ring on surface', resolve('color.focus.ring'), surface, 3);
 add('text default on surface', resolve('color.text.default'), surface, 4.5);
 add('text muted on surface', resolve('color.text.muted'), surface, 4.5);
