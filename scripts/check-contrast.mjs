@@ -42,8 +42,8 @@ for (const variant of ['primary', 'secondary', 'tertiary', 'danger']) {
     const p = (prop) => resolve(`color.card.${variant}.${prop}.${state}`);
     const bg = p('bg') === 'transparent' ? surface : p('bg');
     add(`card ${variant}/${state} text on bg`, p('fg'), bg, 4.5);
-    // Only the outlined variant relies on its border to be perceived as a boundary.
-    if (variant === 'secondary' && state !== 'disabled') add(`card ${variant}/${state} border on surface`, p('border'), surface, 3);
+    // Outlined and danger variants rely on their border to be perceived as a boundary.
+    if ((variant === 'secondary' || variant === 'danger') && state !== 'disabled') add(`card ${variant}/${state} border on surface`, p('border'), surface, 3);
   }
 }
 add('focus ring on surface', resolve('color.focus.ring'), surface, 3);

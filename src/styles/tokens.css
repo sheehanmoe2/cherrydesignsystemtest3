@@ -127,7 +127,7 @@
   --color-card-primary-border-default: var(--color-cherry-200);
   --color-card-primary-border-hover: var(--color-cherry-300);
   --color-card-primary-border-active: var(--color-cherry-400);
-  --color-card-primary-border-disabled: var(--color-neutral-100);
+  --color-card-primary-border-disabled: var(--color-cherry-200);
   --color-card-secondary-bg-default: var(--color-neutral-0);
   --color-card-secondary-bg-hover: var(--color-neutral-50);
   --color-card-secondary-bg-active: var(--color-neutral-100);
@@ -160,10 +160,10 @@
   --color-card-danger-fg-hover: var(--color-neutral-900);
   --color-card-danger-fg-active: var(--color-neutral-900);
   --color-card-danger-fg-disabled: var(--color-neutral-600);
-  --color-card-danger-border-default: var(--color-danger-200);
-  --color-card-danger-border-hover: var(--color-danger-200);
-  --color-card-danger-border-active: var(--color-danger-500);
-  --color-card-danger-border-disabled: var(--color-neutral-100);
+  --color-card-danger-border-default: var(--color-danger-600);
+  --color-card-danger-border-hover: var(--color-danger-700);
+  --color-card-danger-border-active: var(--color-danger-800);
+  --color-card-danger-border-disabled: var(--color-danger-200);
   --size-button-sm-height: var(--size-9);
   --size-button-md-height: var(--size-11);
   --size-button-lg-height: var(--size-13);
