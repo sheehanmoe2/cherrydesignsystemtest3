@@ -37,6 +37,15 @@ for (const variant of ['primary', 'secondary', 'tertiary', 'danger']) {
     if (variant !== 'tertiary' && state !== 'disabled') add(`${variant}/${state} boundary on surface`, p('border'), surface, 3);
   }
 }
+for (const variant of ['primary', 'secondary', 'tertiary', 'danger']) {
+  for (const state of ['default', 'hover', 'active', 'disabled']) {
+    const p = (prop) => resolve(`color.card.${variant}.${prop}.${state}`);
+    const bg = p('bg') === 'transparent' ? surface : p('bg');
+    add(`card ${variant}/${state} text on bg`, p('fg'), bg, 4.5);
+    // Only the outlined variant relies on its border to be perceived as a boundary.
+    if (variant === 'secondary' && state !== 'disabled') add(`card ${variant}/${state} border on surface`, p('border'), surface, 3);
+  }
+}
 add('focus ring on surface', resolve('color.focus.ring'), surface, 3);
 add('text default on surface', resolve('color.text.default'), surface, 4.5);
 add('text muted on surface', resolve('color.text.muted'), surface, 4.5);

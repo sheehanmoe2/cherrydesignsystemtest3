@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { Button, type ButtonSize, type ButtonVariant } from './components/Button';
+import { Card, type CardPadding, type CardVariant } from './components/Card';
 import './App.css';
 
 const variants: ButtonVariant[] = ['primary', 'secondary', 'tertiary', 'danger'];
 const sizes: ButtonSize[] = ['sm', 'md', 'lg'];
+const cardVariants: CardVariant[] = ['primary', 'secondary', 'tertiary', 'danger'];
+const paddings: CardPadding[] = ['sm', 'md', 'lg'];
 
 export default function App() {
   const [clicks, setClicks] = useState(0);
   const [last, setLast] = useState('nothing yet');
+  const [cardClicks, setCardClicks] = useState(0);
 
   const handle = (label: string) => () => {
     setClicks((n) => n + 1);
@@ -42,6 +46,82 @@ export default function App() {
               {variant} disabled
             </Button>
           ))}
+        </div>
+      </section>
+
+      <h1 className="demo__title demo__title--spaced">Cherry Card</h1>
+      <p className="demo__muted" aria-live="polite">
+        Interactive card clicks: {cardClicks}
+      </p>
+
+      <section className="demo__section">
+        <h2 className="demo__heading">Variants × padding</h2>
+        {cardVariants.map((variant) => (
+          <div className="demo__grid" key={variant}>
+            {paddings.map((padding) => (
+              <Card key={padding} variant={variant} padding={padding}>
+                {variant} {padding}
+              </Card>
+            ))}
+          </div>
+        ))}
+      </section>
+
+      <section className="demo__section">
+        <h2 className="demo__heading">Interactive</h2>
+        <div className="demo__grid">
+          {cardVariants.map((variant) => (
+            <Card key={variant} variant={variant} interactive onClick={() => setCardClicks((n) => n + 1)}>
+              <Card.Header>{variant} interactive</Card.Header>
+              <Card.Body>Click, or Tab here and press Enter or Space.</Card.Body>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="demo__section">
+        <h2 className="demo__heading">Disabled</h2>
+        <div className="demo__grid">
+          {cardVariants.map((variant) => (
+            <Card key={variant} variant={variant} interactive disabled>
+              {variant} disabled
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="demo__section">
+        <h2 className="demo__heading">Header, body and footer</h2>
+        <div className="demo__grid">
+          <Card as="article" variant="secondary">
+            <Card.Header>Delete project</Card.Header>
+            <Card.Body>This removes the project and its history. You can't undo this.</Card.Body>
+            <Card.Footer>
+              <Button variant="danger" size="sm" onClick={handle('card delete')}>
+                Delete
+              </Button>
+              <Button variant="tertiary" size="sm" onClick={handle('card cancel')}>
+                Cancel
+              </Button>
+            </Card.Footer>
+          </Card>
+          <Card as="section" variant="primary" padding="lg">
+            <Card.Body>
+              Slots are optional and composable. This card has only a body and larger padding.
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      <section className="demo__section">
+        <h2 className="demo__heading">Long content</h2>
+        <div className="demo__grid">
+          <Card variant="secondary">
+            <Card.Header>A header that is long enough to need wrapping onto a second line at narrow widths</Card.Header>
+            <Card.Body>
+              https://example.com/a/very/long/unbroken/path/that/would/overflow/a/narrow/card/if/it/could/not/wrap
+            </Card.Body>
+          </Card>
         </div>
       </section>
     </main>

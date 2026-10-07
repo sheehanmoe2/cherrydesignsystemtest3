@@ -1,0 +1,157 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* buttons center their content by default */
+  gap: var(--space-card-gap);
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  padding: var(--card-padding);
+  font: inherit;
+  line-height: var(--font-card-line-height);
+  text-align: left;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  color: var(--card-fg);
+  background: var(--card-bg);
+  border: var(--size-card-border-width) solid var(--card-border);
+  border-radius: var(--radius-card);
+  transition:
+    background var(--motion-card-duration),
+    color var(--motion-card-duration),
+    border-color var(--motion-card-duration);
+}
+
+/* Slots */
+.card__slot {
+  display: block;
+}
+.card__header {
+  padding-bottom: var(--space-card-slot-gap);
+  font-weight: var(--font-card-header-weight);
+  border-bottom: var(--size-card-border-width) solid var(--color-card-divider);
+}
+.card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-card-slot-gap);
+  padding-top: var(--space-card-slot-gap);
+  border-top: var(--size-card-border-width) solid var(--color-card-divider);
+}
+
+/* Interactive: the whole card is one control */
+.card--interactive {
+  width: 100%;
+  min-height: var(--size-card-min-height-interactive);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .card--interactive:hover:not(:disabled):not([aria-disabled='true']) {
+    color: var(--card-fg-hover);
+    background: var(--card-bg-hover);
+    border-color: var(--card-border-hover);
+  }
+}
+
+.card--interactive:active:not(:disabled):not([aria-disabled='true']) {
+  color: var(--card-fg-active);
+  background: var(--card-bg-active);
+  border-color: var(--card-border-active);
+}
+
+.card--interactive:focus-visible {
+  outline: var(--size-card-focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--size-card-focus-ring-offset);
+}
+
+.card--disabled {
+  color: var(--card-fg-disabled);
+  background: var(--card-bg-disabled);
+  border-color: var(--card-border-disabled);
+}
+.card--disabled.card--interactive {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+/* Padding */
+.card--pad-sm {
+  --card-padding: var(--space-card-sm-padding);
+}
+.card--pad-md {
+  --card-padding: var(--space-card-md-padding);
+}
+.card--pad-lg {
+  --card-padding: var(--space-card-lg-padding);
+}
+
+/* primary */
+.card--primary {
+  --card-fg: var(--color-card-primary-fg-default);
+  --card-fg-hover: var(--color-card-primary-fg-hover);
+  --card-fg-active: var(--color-card-primary-fg-active);
+  --card-fg-disabled: var(--color-card-primary-fg-disabled);
+  --card-bg: var(--color-card-primary-bg-default);
+  --card-bg-hover: var(--color-card-primary-bg-hover);
+  --card-bg-active: var(--color-card-primary-bg-active);
+  --card-bg-disabled: var(--color-card-primary-bg-disabled);
+  --card-border: var(--color-card-primary-border-default);
+  --card-border-hover: var(--color-card-primary-border-hover);
+  --card-border-active: var(--color-card-primary-border-active);
+  --card-border-disabled: var(--color-card-primary-border-disabled);
+}
+
+/* secondary */
+.card--secondary {
+  --card-fg: var(--color-card-secondary-fg-default);
+  --card-fg-hover: var(--color-card-secondary-fg-hover);
+  --card-fg-active: var(--color-card-secondary-fg-active);
+  --card-fg-disabled: var(--color-card-secondary-fg-disabled);
+  --card-bg: var(--color-card-secondary-bg-default);
+  --card-bg-hover: var(--color-card-secondary-bg-hover);
+  --card-bg-active: var(--color-card-secondary-bg-active);
+  --card-bg-disabled: var(--color-card-secondary-bg-disabled);
+  --card-border: var(--color-card-secondary-border-default);
+  --card-border-hover: var(--color-card-secondary-border-hover);
+  --card-border-active: var(--color-card-secondary-border-active);
+  --card-border-disabled: var(--color-card-secondary-border-disabled);
+}
+
+/* tertiary */
+.card--tertiary {
+  --card-fg: var(--color-card-tertiary-fg-default);
+  --card-fg-hover: var(--color-card-tertiary-fg-hover);
+  --card-fg-active: var(--color-card-tertiary-fg-active);
+  --card-fg-disabled: var(--color-card-tertiary-fg-disabled);
+  --card-bg: var(--color-card-tertiary-bg-default);
+  --card-bg-hover: var(--color-card-tertiary-bg-hover);
+  --card-bg-active: var(--color-card-tertiary-bg-active);
+  --card-bg-disabled: var(--color-card-tertiary-bg-disabled);
+  --card-border: var(--color-card-tertiary-border-default);
+  --card-border-hover: var(--color-card-tertiary-border-hover);
+  --card-border-active: var(--color-card-tertiary-border-active);
+  --card-border-disabled: var(--color-card-tertiary-border-disabled);
+}
+
+/* danger */
+.card--danger {
+  --card-fg: var(--color-card-danger-fg-default);
+  --card-fg-hover: var(--color-card-danger-fg-hover);
+  --card-fg-active: var(--color-card-danger-fg-active);
+  --card-fg-disabled: var(--color-card-danger-fg-disabled);
+  --card-bg: var(--color-card-danger-bg-default);
+  --card-bg-hover: var(--color-card-danger-bg-hover);
+  --card-bg-active: var(--color-card-danger-bg-active);
+  --card-bg-disabled: var(--color-card-danger-bg-disabled);
+  --card-border: var(--color-card-danger-border-default);
+  --card-border-hover: var(--color-card-danger-border-hover);
+  --card-border-active: var(--color-card-danger-border-active);
+  --card-border-disabled: var(--color-card-danger-border-disabled);
+}

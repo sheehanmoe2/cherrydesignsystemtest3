@@ -40,3 +40,14 @@ body {
   gap: var(--space-layout-sm);
   margin-bottom: var(--space-layout-sm);
 }
+
+.demo__title--spaced {
+  margin-top: var(--space-layout-lg);
+}
+
+.demo__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--size-layout-card-min), 1fr));
+  gap: var(--space-layout-sm);
+  margin-bottom: var(--space-layout-sm);
+}
